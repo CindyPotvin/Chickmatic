@@ -1,0 +1,37 @@
+body
+{
+	background-color: #998575;
+    color: #210f04;
+}
+
+h1
+{
+    text-align: center;
+}
+ 
+h2
+{
+    margin: 0px;
+}
+
+.InfoBlock
+{
+    display: inline-block; 
+    vertical-align: top;    
+	border: 1px dashed #424b54;  
+    background-color: #afbfc0;
+    border-radius: 10px;
+	padding: 10px;
+    margin: 10px;
+}
+
+.Label
+{
+    color: grey;
+}
+
+.Value
+{
+    font-size: 30px;
+} 
+/*Extra color from palette: #9fa4a9*/

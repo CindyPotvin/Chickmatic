@@ -1,0 +1,18 @@
+{
+  "name": "chickmatic-web-server",
+  "version": "1.0.0",
+  "description": "The server to drive the Chickmatic controller.",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "author": "Cindy Potvin",
+  "dependencies": {
+    "express": "^4.14.0",
+    "handlebars":"^4.0.5", 
+    "nodemon": "^1.9.2",
+    "body-parser": "^1.15.2"
+  }
+}
+
