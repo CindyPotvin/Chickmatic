@@ -5,6 +5,8 @@ var bodyParser = require('body-parser'); /* Parses incoming requests (for json)*
 var morgan  = require('morgan') /* Show access logs in console */
 var app = express();
 
+var config = require('./config.js');
+
 app.use(morgan('combined'));
 app.use(express.static(__dirname + '/static'));
 app.use(bodyParser.json())
@@ -15,7 +17,7 @@ app.get('/', function (req, res, next) {
     var currentCoop;
     // Open the file with the schedule information and load them, along with mock data for the 
     // weather
-	fs.readFile( __dirname + "/" + "scheduledperiods.json", 'utf8', function (error, data) {
+	fs.readFile( __dirname + "/" + config.scheduleFile[app.settings.env], 'utf8', function (error, data) {
 	    if (error) 
             return console.log(error);
         var currentSchedules = JSON.parse(data);
@@ -35,9 +37,11 @@ app.get('/', function (req, res, next) {
 	    if (error) 
 	        return console.log(error);
 
+        var currentSchedules = JSON.parse(data);
         var template = handlebars.compile(source);
         var html = template(currentCoop);
         res.send(html);
+        
         });
     } catch (e) {
         console.log(e);
@@ -47,7 +51,8 @@ app.get('/', function (req, res, next) {
 
 // Returns the periods in the schedule as a JSON string so the controller can get the data.
 app.get('/ScheduledPeriods', function (request, response) {
-    fs.readFile( __dirname + "/" + "scheduledperiods.json", 'utf8', function (error, data) {
+    console.log("env:", app.settings.env);
+    fs.readFile( __dirname + "/" + config.scheduleFile[app.settings.env], 'utf8', function (error, data) {
 	    if (error) 
 	        return console.log(error);
             
@@ -57,13 +62,13 @@ app.get('/ScheduledPeriods', function (request, response) {
 
 // Adds a new period to the schedule
 app.post('/scheduledperiod', function(request, response) {
-	fs.readFile( __dirname + "/" + "scheduledperiods.json", 'utf8', function (error, data) {
+	fs.readFile( __dirname + "/" + config.scheduleFile[app.settings.env], 'utf8', function (error, data) {
         if (error) 
 	        return console.log(error);
 
 	    data = JSON.parse(data);
         data.periods.push(req.body);
-        fs.writeFile( __dirname + "/" + "scheduledperiods.json", JSON.stringify(data), 'utf8', function (error) {
+        fs.writeFile( __dirname + "/" + config.scheduleFile[app.settings.env], JSON.stringify(data), 'utf8', function (error) {
 	        if (error) 
 	            return console.log(error);
             });
@@ -72,6 +77,9 @@ app.post('/scheduledperiod', function(request, response) {
     });
 
 // Starts the application and listen to requests
-app.listen(process.env.PORT || 4444, function () {
-    console.log('Listening on http://localhost:' + (process.env.PORT || 4444))
+var server = app.listen(4444, function () {
+    console.log('Listening on http://localhost:' + (4444))
     });
+
+exports.server = server;
+exports.app = app;
