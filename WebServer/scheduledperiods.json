@@ -1,7 +1,2 @@
-{"periods":[
-    {"id":1,"startLight":{"hours":21,"minutes":15},
-            "stopLight":{"hours":21,"minutes":18}},
-    {"id":2,"startLight":{"hours":21,"minutes":25},
-            "stopLight":{"hours":21,"minutes":32}},
-    {"id":3,"startLight":{"hours":22,"minutes":25},
-            "stopLight":{"hours":22,"minutes":32}}]}
+{"startLight":{"hours":21,"minutes":15},
+ "stopLight":{"hours":21,"minutes":18}}

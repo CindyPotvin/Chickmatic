@@ -1,0 +1,73 @@
+<html>
+    <head>
+	    <title>Chickmatic control system</title>
+        <link rel="stylesheet" type="text/css" href="/css/index.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>            
+    <body>
+        <h1>Chickmatic control system</h1>
+        <div id="Weather" class="InfoBlock">
+            <h2>Météo courante</h2>
+            <div class="WeatherLabelValue">
+                <span class="Label">Coop Temperature:</span>
+                <span class="Value">{{currentCoopTemperature}}°C</span>
+            </div>
+            <div class="WeatherLabelValue">
+                <span class="Label">Coop Humidity:</span>
+                <span class="Value">{{currentCoopHumidityPercent}}%</span>
+            </div>
+            <div class="WeatherLabelValue">
+                <span class="Label">Coop Luminosity:</span>
+                <span class="Value">{{currentCoopLuminosity}}</span>
+            </div>
+            <div class="WeatherLabelValue">
+                <span class="Label">Outside Temperature:</span>
+                <span class="Value">{{currentOutsideTemperature}}°C</span>
+            </div>
+            <div class="WeatherLabelValue">
+                <span class="Label">Outside Humidity:</span>
+                <span class="Value">{{currentOutsideHumidityPercent}}%</span>
+            </div>
+        </div>
+
+        <div id="LightSchedule" class="InfoBlock">
+            <h2>Horaire de la lumière</h2>
+                <div class="ScheduledTime">
+                    <span class="Value">{{scheduledPeriod.startLight.hours}}:{{scheduledPeriod.startLight.minutes}} to {{scheduledPeriod.stopLight.hours}}:{{scheduledPeriod.stopLight.minutes}}</span>
+                </div>
+
+            Set new schedule: "todo: javascript pour sauvegarder, 0 padding à 2 caractères"
+            <form>
+                <label for="StartTimeHour">Allume:</label>
+                <select id="StartTimeHour">
+                    <option></option>
+                    {{#times 24}}
+                    <option>{{{@index}}}</option>
+                    {{/times}}
+                </select>
+                <select id="StartTimeMinutes">
+                     <option></option>
+                    {{#times 60}}
+                    <option>{{{@index}}}</option>
+                    {{/times}}
+                </select>
+                <label for="StartTimeHour">Éteint:</label>
+                <select id="EndTimeHour">
+                    <option></option>
+                    {{#times 24}}
+                    <option>{{{@index}}}</option>
+                    {{/times}}
+                </select>
+                <select id="StartTimeMinutes">
+                    <option></option>
+                    {{#times 60}}
+                    <option>{{{@index}}}</option>
+                    {{/times}}
+                </select>
+                <input type="button" value="Save">
+            </form>
+        </div>
+        <script src="/js/jquery-3.2.1.js"></script> 
+        <script src="/js/index.js"></script> 
+    </body>
+</html>

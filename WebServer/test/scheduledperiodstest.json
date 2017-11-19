@@ -1,3 +1,1 @@
-{"periods":[
-    {"id":1,"startLight":{"hours":21,"minutes":15},
-            "stopLight":{"hours":21,"minutes":18}}]}
+{"startLight":{"hours":21,"minutes":15},"stopLight":{"hours":21,"minutes":18},"timestamp":1507416732477}
