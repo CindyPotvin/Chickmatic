@@ -1,4 +1,5 @@
 var hbs  = require('express-handlebars');
+var leftPad  = require('left-pad');
 
 function hbsHelpers(hbs) {
     return hbs.create({
@@ -15,6 +16,9 @@ function hbsHelpers(hbs) {
                 accum += block.fn(this);
             }
             return (accum);
+        },
+      leftPadNumbers: function(number) {
+        return (leftPad(String(number), 2, '0'));
         }
       }
     });

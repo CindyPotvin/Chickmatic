@@ -26,6 +26,7 @@ app.get('/', function (req, res, next) {
             return console.log(error);
         var currentSchedule = JSON.parse(data);
         currentCoop.scheduledPeriod = currentSchedule;
+
         res.render('index', currentCoop);
         });
     } catch (e) {
