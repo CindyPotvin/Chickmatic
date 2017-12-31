@@ -35,33 +35,32 @@
                 <div class="ScheduledTime">
                     <span class="Value">{{scheduledPeriod.startLight.hours}}:{{scheduledPeriod.startLight.minutes}} to {{scheduledPeriod.stopLight.hours}}:{{scheduledPeriod.stopLight.minutes}}</span>
                 </div>
-
-            Set new schedule: "todo: javascript pour sauvegarder, 0 padding à 2 caractères"
+            Set new schedule:
             <form>
                 <label for="StartTimeHour">Allume:</label>
                 <select id="StartTimeHour">
                     <option></option>
                     {{#times 24}}
-                    <option>{{{@index}}}</option>
+                    <option>{{#leftPadNumbers @index}}{{/leftPadNumbers}}</option>
                     {{/times}}
                 </select>
                 <select id="StartTimeMinutes">
                      <option></option>
                     {{#times 60}}
-                    <option>{{{@index}}}</option>
+                    <option>{{#leftPadNumbers @index}}{{/leftPadNumbers}}</option>
                     {{/times}}
                 </select>
                 <label for="StartTimeHour">Éteint:</label>
                 <select id="EndTimeHour">
                     <option></option>
                     {{#times 24}}
-                    <option>{{{@index}}}</option>
+                    <option>{{#leftPadNumbers @index}}{{/leftPadNumbers}}</option>
                     {{/times}}
                 </select>
                 <select id="StartTimeMinutes">
                     <option></option>
                     {{#times 60}}
-                    <option>{{{@index}}}</option>
+                    <option>{{#leftPadNumbers @index}}{{/leftPadNumbers}}</option>
                     {{/times}}
                 </select>
                 <input type="button" value="Save">
